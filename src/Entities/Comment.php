@@ -3,6 +3,7 @@
 namespace Balaremember\LaravelCommentsService\Entities;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -18,7 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon $updated_at
  * @property Carbon $deleted_at
  */
-class Comment extends BaseEntity
+class Comment extends Model
 {
     use SoftDeletes;
 

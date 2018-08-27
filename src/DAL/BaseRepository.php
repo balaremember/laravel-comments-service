@@ -66,7 +66,7 @@ abstract class BaseRepository
     }
 
     /**
-     * @return Collection Collection of all retrieved models from the database.
+     * @return Collection of all retrieved models from the database.
      */
     public function all(): Collection
     {
