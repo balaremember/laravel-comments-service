@@ -1,0 +1,44 @@
+{
+    "name": "balaremember/laravel-comments-service",
+    "description": "Tree comments system for laravel projects",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tagirov Ruslan",
+            "email": "rtagirov@codenetix.com"
+        }
+    ],
+    "homepage": "https://github.com/balaremember/laravel-comments-service",
+    "minimum-stability": "dev",
+    "require": {
+        "illuminate/database": "~5.0",
+        "illuminate/config": "~5.0",
+        "illuminate/container": "~5.0",
+        "illuminate/support": "~5.0",
+        "illuminate/http": "~5.0",
+        "illuminate/contracts": "~5.0",
+        "nesbot/carbon": "^1.33"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0",
+        "mockery/mockery": "0.9.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Balaremember\\LaravelCommentsService\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Balaremember\\LaravelCommentsService\\Test\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Balaremember\\LaravelCommentsService\\CommentsServiceProvider"
+            ]
+        }
+    }
+}

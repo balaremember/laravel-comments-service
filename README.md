@@ -1,2 +1,4 @@
-# laravel-comments-service
-Comment system for laravel projects.
+# Laravel comments
+Tree comments system for laravel projects.
+
+
