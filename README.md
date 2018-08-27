@@ -15,13 +15,19 @@ Tree comments system for laravel projects.
     ```
 2. Run composer install:
     ```
-    $ composer require balaremember/laravel-comments-service --dev
+    composer require balaremember/laravel-comments-service --dev
     ```
 3. Publish vendor definitions:
     ```
-    $ php artisan vendor:publish
+    php artisan vendor:publish --provider="Balaremember\LaravelCommentsService\CommentsServiceProvider"
     ```
-4. Custom Polymorphic Types in your AppServiceProvider
+4. Now you have comments config file with parameters:
+    ```
+    'perPage' => Number of comments on one level,
+    'levelDepth' => Depth of comments for the original download
+    ```
+   
+5. Custom Polymorphic Types in your AppServiceProvider like:
     ```
     use Illuminate\Database\Eloquent\Relations\Relation;
     
