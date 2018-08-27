@@ -2,6 +2,8 @@
 
 namespace Balaremember\LaravelCommentsService;
 
+use Balaremember\LaravelCommentsService\Contracts\ICommentRepository;
+use Balaremember\LaravelCommentsService\DatabaseAbstractLayer\CommentRepositoryAdapter;
 use Illuminate\Support\ServiceProvider;
 
 class CommentsServiceProvider extends ServiceProvider
@@ -28,6 +30,7 @@ class CommentsServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind(ICommentRepository::class, CommentRepositoryAdapter::class);
         $this->mergeConfigFrom(
             __DIR__.'/../config/comments.php',
             'comments'

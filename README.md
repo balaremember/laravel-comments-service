@@ -13,3 +13,21 @@ Tree comments system for laravel projects.
         ...
     ]
     ```
+2. Run composer install:
+    ```
+    $ composer require balaremember/laravel-comments-service --dev
+    ```
+3. Publish vendor definitions:
+    ```
+    $ php artisan vendor:publish
+    ```
+4. Custom Polymorphic Types in your AppServiceProvider
+    ```
+    use Illuminate\Database\Eloquent\Relations\Relation;
+    
+    Relation::morphMap([
+        'posts' => 'App\Post',
+        'videos' => 'App\Video',
+    ]);
+    ```
+    See more in [Laravel Documentation](https://laravel.com/docs/5.6/eloquent-relationships#polymorphic-relations)
