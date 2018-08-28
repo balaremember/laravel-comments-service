@@ -29,12 +29,11 @@ class CommentsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // php artisan vendor:publish -tag=laravel-comments-config
         $this->publishes([
             __DIR__.'/../config/comments.php' => config_path('comments.php'),
         ], 'laravel-comments-config');
 
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations/2018_07_20_043605_create_comments_table.php');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations/0000_00_00_000000_create_comments_table.php');
     }
 
     /**
