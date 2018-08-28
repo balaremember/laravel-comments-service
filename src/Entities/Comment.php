@@ -5,6 +5,7 @@ namespace Balaremember\LaravelCommentsService\Entities;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Config;
 
 /**
  * Class Comment.
@@ -39,7 +40,7 @@ class Comment extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Config::get('comments.userModel'));
     }
 
     public function commentable()

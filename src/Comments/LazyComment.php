@@ -2,10 +2,11 @@
 
 namespace Balaremember\LaravelCommentsService\Comments;
 
+use Balaremember\LaravelCommentsService\Contracts\ILazyComment;
 use Balaremember\LaravelCommentsService\Service\CommentService;
 use Balaremember\LaravelCommentsService\Collection\CommentsCollection;
 
-class LazyComment extends Comment
+class LazyComment extends Comment implements ILazyComment
 {
     /**
      * @var boolean

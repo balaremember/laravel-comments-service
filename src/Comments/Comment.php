@@ -71,6 +71,7 @@ class Comment implements IComment
      */
     public function __construct(CommentService $service, int $pageNumber = 1)
     {
+
         $this->service = $service;
         $this->children = new CommentsCollection([], $service, $pageNumber);
     }

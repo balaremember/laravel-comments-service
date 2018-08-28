@@ -2,13 +2,15 @@
 
 namespace Balaremember\LaravelCommentsService\Service;
 
+use Balaremember\LaravelCommentsService\Contracts\IComment;
+use Balaremember\LaravelCommentsService\Contracts\IListStrategy;
+use Balaremember\LaravelCommentsService\Contracts\ITransformer;
+use Balaremember\LaravelCommentsService\Contracts\ITreeStrategy;
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Balaremember\LaravelCommentsService\Contracts\ICommentRepository;
-use Balaremember\LaravelCommentsService\Transformer\CommentTransformer;
 use Balaremember\LaravelCommentsService\Comments\Comment;
 use Balaremember\LaravelCommentsService\Collection\CommentsCollection;
-use Balaremember\LaravelCommentsService\Strategy\CommentTransformerTreeStrategy;
-use Balaremember\LaravelCommentsService\Strategy\CommentTransformerListStrategy;
 use Balaremember\LaravelCommentsService\Contracts\ITransformerStrategy;
 
 class CommentService
@@ -22,14 +24,20 @@ class CommentService
      * @var ICommentRepository
      */
     private $repository;
+    /**
+     * @var Container
+     */
+    private $container;
 
     /**
      * CommentService constructor.
      * @param ICommentRepository $repository
+     * @param Container $container
      */
-    public function __construct(ICommentRepository $repository)
+    public function __construct(ICommentRepository $repository, Container $container)
     {
         $this->repository = $repository;
+        $this->container = $container;
     }
 
     /**
@@ -39,7 +47,8 @@ class CommentService
     public function find(int $id): Comment
     {
         /** @var Comment $entity */
-        $transformer = new CommentTransformer(new Comment($this));
+        $comment = $this->container->make(IComment::class, [$this]);
+        $transformer = $this->container->make(ITransformer::class, [$comment]);
         $entity = $this->repository->find($id, $transformer);
         return $entity;
     }
@@ -51,7 +60,8 @@ class CommentService
     public function create(array $data): Comment
     {
         /** @var Comment $entity */
-        $transformer = new CommentTransformer(new Comment($this));
+        $comment = $this->container->make(IComment::class, [$this]);
+        $transformer = $this->container->make(ITransformer::class, [$comment]);
         $entity = $this->repository->create($data, $transformer);
         return $entity;
     }
@@ -64,7 +74,8 @@ class CommentService
     public function update(array $data, int $id): Comment
     {
         /** @var Comment $entity */
-        $transformer = new CommentTransformer(new Comment($this));
+        $comment = $this->container->make(IComment::class, [$this]);
+        $transformer = $this->container->make(ITransformer::class, [$comment]);
         $entity = $this->repository->update($data, $id, $transformer);
         return $entity;
     }
@@ -75,7 +86,8 @@ class CommentService
      */
     public function delete(int $id): ?bool
     {
-        $transformer = new CommentTransformer(new Comment($this));
+        $comment = $this->container->make(IComment::class, [$this]);
+        $transformer = $this->container->make(ITransformer::class, [$comment]);
         try {
             $this->repository->find($id, $transformer);
         } catch (ModelNotFoundException $e) {
@@ -91,7 +103,7 @@ class CommentService
      */
     public function getListComments(int $documentId): CommentsCollection
     {
-        $this->strategy = new CommentTransformerListStrategy($this);
+        $this->strategy = $this->container->make(IListStrategy::class);
         return $this->repository->all($documentId, $this->strategy);
     }
 
@@ -100,9 +112,9 @@ class CommentService
      * @param integer $pageNumber
      * @return CommentsCollection
      */
-    public function getCommentsTreeByDocumentId(int $documentId, int $pageNumber): CommentsCollection
+    public function getCommentsTreeByObjectId(int $documentId, int $pageNumber): CommentsCollection
     {
-        $this->strategy = new CommentTransformerTreeStrategy($this);
+        $this->strategy = $this->container->make(ITreeStrategy::class);
         return $this->repository->paginateCommentsByDocumentId($documentId, $pageNumber, $this->strategy);
     }
 
@@ -113,7 +125,7 @@ class CommentService
      */
     public function getCommentsTreeByRootCommentId(int $commentId, int $pageNumber): CommentsCollection
     {
-        $this->strategy = new CommentTransformerTreeStrategy($this);
+        $this->strategy = $this->container->make(ITreeStrategy::class);
         return $this->repository->paginateCommentsByRootCommentId($commentId, $pageNumber, $this->strategy);
     }
 }

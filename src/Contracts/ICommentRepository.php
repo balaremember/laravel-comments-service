@@ -46,12 +46,13 @@ interface ICommentRepository
     public function delete(int $id): bool ;
 
     /**
-     * @param integer              $commentId
+     * @param integer              $objectId
      * @param integer              $pageNumber
+     * @param string               $type
      * @param ITransformerStrategy $strategy
      * @return mixed
      */
-    public function paginateCommentsByDocumentId(int $commentId, int $pageNumber, ITransformerStrategy $strategy): CommentsCollection;
+    public function paginateCommentsByObjectId(int $objectId, int $pageNumber, string $type, ITransformerStrategy $strategy): CommentsCollection;
 
     /**
      * @param integer              $commentId

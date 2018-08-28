@@ -2,6 +2,7 @@
 
 namespace Balaremember\LaravelCommentsService\Strategy;
 
+use Balaremember\LaravelCommentsService\Contracts\ITreeStrategy;
 use Illuminate\Support\Collection;
 use Balaremember\LaravelCommentsService\Transformer\CommentTransformer;
 use Balaremember\LaravelCommentsService\Service\CommentService;
@@ -10,7 +11,7 @@ use Balaremember\LaravelCommentsService\Collection\CommentsCollection;
 use Balaremember\LaravelCommentsService\Comments\LazyComment;
 use Balaremember\LaravelCommentsService\Comments\Comment;
 
-class CommentTransformerTreeStrategy implements ITransformerStrategy
+class CommentTransformerTreeStrategy implements ITransformerStrategy, ITreeStrategy
 {
     /**
      * @var CommentService

@@ -6,8 +6,8 @@ use Balaremember\LaravelCommentsService\Contracts\ICommentRepository;
 use Balaremember\LaravelCommentsService\Contracts\ITransformerStrategy;
 use Balaremember\LaravelCommentsService\Transformer\CommentTransformer;
 use Balaremember\LaravelCommentsService\Collection\CommentsCollection;
-use Illuminate\Config\Repository;
-use Illuminate\Container\Container;
+use Illuminate\Contracts\Config\Repository;
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\Collection;
 use Balaremember\LaravelCommentsService\Comments\Comment;
 
@@ -99,12 +99,13 @@ class CommentRepositoryAdapter implements ICommentRepository
     }
 
     /**
-     * @param integer              $documentId
-     * @param integer              $pageNumber
+     * @param int $objectId
+     * @param integer $pageNumber
+     * @param string $type
      * @param ITransformerStrategy $strategy
      * @return mixed
      */
-    public function paginateCommentsByDocumentId(int $documentId, int $pageNumber, ITransformerStrategy $strategy): CommentsCollection
+    public function paginateCommentsByObjectId(int $objectId, int $pageNumber, string $type, ITransformerStrategy $strategy): CommentsCollection
     {
         $perPage = $this->config->get('comments.perPage');
         $maxLevelDepth = ($this->config->get('comments.levelDepth') - 1);
@@ -112,8 +113,8 @@ class CommentRepositoryAdapter implements ICommentRepository
         $rootLevelComments = $this->repository->getInstance()
             ->whereNull('parent_id')
             ->where([
-                'commentable_type' => 'document',
-                'commentable_id' => $documentId
+                'commentable_type' => $type,
+                'commentable_id' => $objectId
             ])
             ->skip(($perPage*$pageNumber) - $perPage)
             ->take($perPage)

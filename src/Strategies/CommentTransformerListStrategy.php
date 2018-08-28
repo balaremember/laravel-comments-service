@@ -2,14 +2,16 @@
 
 namespace Balaremember\LaravelCommentsService\Strategy;
 
-use Balaremember\LaravelCommentsService\Comments\Comment;
+use Balaremember\LaravelCommentsService\Contracts\IComment;
+use Balaremember\LaravelCommentsService\Contracts\IListStrategy;
+use Balaremember\LaravelCommentsService\Contracts\ITransformer;
 use Balaremember\LaravelCommentsService\Service\CommentService;
-use Balaremember\LaravelCommentsService\Transformer\CommentTransformer;
 use Balaremember\LaravelCommentsService\Collection\CommentsCollection;
 use Balaremember\LaravelCommentsService\Contracts\ITransformerStrategy;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\App;
 
-class CommentTransformerListStrategy implements ITransformerStrategy
+class CommentTransformerListStrategy implements ITransformerStrategy, IListStrategy
 {
     /**
      * @var CommentService
@@ -34,8 +36,9 @@ class CommentTransformerListStrategy implements ITransformerStrategy
      */
     public function make(Collection $commentModels, int $levelDepth = null, int $pageNumber = 1, int $currentParentId = null): CommentsCollection
     {
-        $transformer = new CommentTransformer(new Comment($this->service));
-        $entityCommentCollection = new CommentsCollection([], $this->service);
+        $comment = App::make(IComment::class, [$this]);
+        $transformer = App::make(ITransformer::class, [$comment]);
+        $entityCommentCollection = App::make(CommentsCollection::class, [$this->service]);
 
         foreach ($commentModels as $currentCommentModel) {
             $entityCommentCollection->push($transformer->transform($currentCommentModel));
