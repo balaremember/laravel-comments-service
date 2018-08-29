@@ -2,8 +2,8 @@
 
 namespace Balaremember\LaravelCommentsService\DatabaseAbstractLayer;
 
-use Balaremember\LaravelCommentsService\Service\CommentService;
-use Balaremember\LaravelCommentsService\Collection\CommentsCollection;
+use Balaremember\LaravelCommentsService\Services\CommentService;
+use Balaremember\LaravelCommentsService\Collections\CommentsCollection;
 use ArrayAccess;
 use Countable;
 use Iterator;

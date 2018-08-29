@@ -2,7 +2,7 @@
 
 namespace Balaremember\LaravelCommentsService\Contracts;
 
-use Balaremember\LaravelCommentsService\Collection\CommentsCollection;
+use Balaremember\LaravelCommentsService\Collections\CommentsCollection;
 
 interface IComment
 {

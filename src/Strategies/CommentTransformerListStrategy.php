@@ -1,12 +1,12 @@
 <?php
 
-namespace Balaremember\LaravelCommentsService\Strategy;
+namespace Balaremember\LaravelCommentsService\Strategies;
 
 use Balaremember\LaravelCommentsService\Contracts\IComment;
 use Balaremember\LaravelCommentsService\Contracts\IListStrategy;
 use Balaremember\LaravelCommentsService\Contracts\ITransformer;
-use Balaremember\LaravelCommentsService\Service\CommentService;
-use Balaremember\LaravelCommentsService\Collection\CommentsCollection;
+use Balaremember\LaravelCommentsService\Services\CommentService;
+use Balaremember\LaravelCommentsService\Collections\CommentsCollection;
 use Balaremember\LaravelCommentsService\Contracts\ITransformerStrategy;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;

@@ -2,12 +2,12 @@
 
 namespace Balaremember\LaravelCommentsService\Test\Unit;
 
-use Balaremember\LaravelCommentsService\Collection\CommentsCollection;
+use Balaremember\LaravelCommentsService\Collections\CommentsCollection;
 use Balaremember\LaravelCommentsService\Comments\LazyComment;
 use Balaremember\LaravelCommentsService\CommentsServiceProvider;
 use Balaremember\LaravelCommentsService\Entities\Comment;
-use Balaremember\LaravelCommentsService\Service\CommentService;
-use Balaremember\LaravelCommentsService\Strategy\CommentTransformerTreeStrategy;
+use Balaremember\LaravelCommentsService\Services\CommentService;
+use Balaremember\LaravelCommentsService\Strategies\CommentTransformerTreeStrategy;
 use Balaremember\LaravelCommentsService\Comments\Comment as CommentEntity;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
@@ -23,11 +23,7 @@ class CommentTransformerTreeStrategyTest extends TestCase
     protected function setUp()
     {
         parent::setUp();
-        $this->withFactories('/home/rtagirov/laravel-comments-service/database/factories');
-//
-//        require  'src/Strategies/CommentTransformerTreeStrategy.php';
-//        require 'src/Collections/CommentsCollection.php';
-//        require 'src/Transformers/CommentTransformer.php';
+        $this->withFactories('database/factories');
     }
 
     protected function getPackageProviders($app)

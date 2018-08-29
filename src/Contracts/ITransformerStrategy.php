@@ -3,7 +3,7 @@
 namespace Balaremember\LaravelCommentsService\Contracts;
 
 use Illuminate\Support\Collection;
-use Balaremember\LaravelCommentsService\Collection\CommentsCollection;
+use Balaremember\LaravelCommentsService\Collections\CommentsCollection;
 
 interface ITransformerStrategy
 {

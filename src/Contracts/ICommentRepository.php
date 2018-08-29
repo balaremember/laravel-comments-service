@@ -2,8 +2,8 @@
 
 namespace Balaremember\LaravelCommentsService\Contracts;
 
-use Balaremember\LaravelCommentsService\Collection\CommentsCollection;
-use Balaremember\LaravelCommentsService\Transformer\CommentTransformer;
+use Balaremember\LaravelCommentsService\Collections\CommentsCollection;
+use Balaremember\LaravelCommentsService\Transformers\CommentTransformer;
 use Balaremember\LaravelCommentsService\Comments\Comment;
 /**
  * Interface ICommentRepository.

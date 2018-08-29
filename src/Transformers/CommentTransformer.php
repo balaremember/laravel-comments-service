@@ -1,6 +1,6 @@
 <?php
 
-namespace Balaremember\LaravelCommentsService\Transformer;
+namespace Balaremember\LaravelCommentsService\Transformers;
 
 use Balaremember\LaravelCommentsService\Contracts\ITransformer;
 use Balaremember\LaravelCommentsService\Contracts\IComment;

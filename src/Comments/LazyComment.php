@@ -3,8 +3,8 @@
 namespace Balaremember\LaravelCommentsService\Comments;
 
 use Balaremember\LaravelCommentsService\Contracts\ILazyComment;
-use Balaremember\LaravelCommentsService\Service\CommentService;
-use Balaremember\LaravelCommentsService\Collection\CommentsCollection;
+use Balaremember\LaravelCommentsService\Services\CommentService;
+use Balaremember\LaravelCommentsService\Collections\CommentsCollection;
 
 class LazyComment extends Comment implements ILazyComment
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Balaremember\LaravelCommentsService\Strategy;
+namespace Balaremember\LaravelCommentsService\Strategies;
 
 use Balaremember\LaravelCommentsService\Contracts\ITreeStrategy;
 use Illuminate\Support\Collection;
-use Balaremember\LaravelCommentsService\Transformer\CommentTransformer;
-use Balaremember\LaravelCommentsService\Service\CommentService;
+use Balaremember\LaravelCommentsService\Transformers\CommentTransformer;
+use Balaremember\LaravelCommentsService\Services\CommentService;
 use Balaremember\LaravelCommentsService\Contracts\ITransformerStrategy;
-use Balaremember\LaravelCommentsService\Collection\CommentsCollection;
+use Balaremember\LaravelCommentsService\Collections\CommentsCollection;
 use Balaremember\LaravelCommentsService\Comments\LazyComment;
 use Balaremember\LaravelCommentsService\Comments\Comment;
 

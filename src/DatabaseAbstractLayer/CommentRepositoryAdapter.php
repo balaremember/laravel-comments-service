@@ -4,8 +4,8 @@ namespace Balaremember\LaravelCommentsService\DatabaseAbstractLayer;
 
 use Balaremember\LaravelCommentsService\Contracts\ICommentRepository;
 use Balaremember\LaravelCommentsService\Contracts\ITransformerStrategy;
-use Balaremember\LaravelCommentsService\Transformer\CommentTransformer;
-use Balaremember\LaravelCommentsService\Collection\CommentsCollection;
+use Balaremember\LaravelCommentsService\Transformers\CommentTransformer;
+use Balaremember\LaravelCommentsService\Collections\CommentsCollection;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\Collection;

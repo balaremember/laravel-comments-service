@@ -2,7 +2,7 @@
 
 namespace Balaremember\LaravelCommentsService;
 
-use Balaremember\LaravelCommentsService\Collection\CommentsCollection;
+use Balaremember\LaravelCommentsService\Collections\CommentsCollection;
 use Balaremember\LaravelCommentsService\Comments\Comment;
 use Balaremember\LaravelCommentsService\Comments\LazyComment;
 use Balaremember\LaravelCommentsService\Contracts\IComment;
@@ -12,10 +12,10 @@ use Balaremember\LaravelCommentsService\Contracts\IListStrategy;
 use Balaremember\LaravelCommentsService\Contracts\ITransformer;
 use Balaremember\LaravelCommentsService\Contracts\ITreeStrategy;
 use Balaremember\LaravelCommentsService\DatabaseAbstractLayer\CommentRepositoryAdapter;
-use Balaremember\LaravelCommentsService\Service\CommentService;
-use Balaremember\LaravelCommentsService\Strategy\CommentTransformerListStrategy;
-use Balaremember\LaravelCommentsService\Strategy\CommentTransformerTreeStrategy;
-use Balaremember\LaravelCommentsService\Transformer\CommentTransformer;
+use Balaremember\LaravelCommentsService\Services\CommentService;
+use Balaremember\LaravelCommentsService\Strategies\CommentTransformerListStrategy;
+use Balaremember\LaravelCommentsService\Strategies\CommentTransformerTreeStrategy;
+use Balaremember\LaravelCommentsService\Transformers\CommentTransformer;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 

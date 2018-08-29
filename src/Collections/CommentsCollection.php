@@ -1,8 +1,8 @@
 <?php
 
-namespace Balaremember\LaravelCommentsService\Collection;
+namespace Balaremember\LaravelCommentsService\Collections;
 
-use Balaremember\LaravelCommentsService\Service\CommentService;
+use Balaremember\LaravelCommentsService\Services\CommentService;
 use Balaremember\LaravelCommentsService\DatabaseAbstractLayer\DatabaseCommentIterator;
 use Illuminate\Support\Collection;
 use Traversable;

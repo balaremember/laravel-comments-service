@@ -1,6 +1,6 @@
 <?php
 
-namespace Balaremember\LaravelCommentsService\Service;
+namespace Balaremember\LaravelCommentsService\Services;
 
 use Balaremember\LaravelCommentsService\Contracts\IComment;
 use Balaremember\LaravelCommentsService\Contracts\IListStrategy;
@@ -10,7 +10,7 @@ use Illuminate\Contracts\Container\Container;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Balaremember\LaravelCommentsService\Contracts\ICommentRepository;
 use Balaremember\LaravelCommentsService\Comments\Comment;
-use Balaremember\LaravelCommentsService\Collection\CommentsCollection;
+use Balaremember\LaravelCommentsService\Collections\CommentsCollection;
 use Balaremember\LaravelCommentsService\Contracts\ITransformerStrategy;
 
 class CommentService
