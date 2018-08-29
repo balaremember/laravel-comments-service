@@ -3,6 +3,7 @@
 namespace Balaremember\LaravelCommentsService\Test\Unit;
 
 use Balaremember\LaravelCommentsService\Comments\Comment;
+use Balaremember\LaravelCommentsService\CommentsServiceProvider;
 use Balaremember\LaravelCommentsService\DatabaseAbstractLayer\DatabaseCommentIterator;
 use Balaremember\LaravelCommentsService\Collection\CommentsCollection;
 use Balaremember\LaravelCommentsService\Service\CommentService;
@@ -18,6 +19,12 @@ class DatabaseCommentIteratorTest extends TestCase
     protected function setUp()
     {
         parent::setUp();
+        //require '/home/rtagirov/laravel-comments-service/src/DAL/DatabaseCommentIterator.php';
+    }
+
+    protected function getPackageProviders($app)
+    {
+        return [CommentsServiceProvider::class];
     }
 
     /**

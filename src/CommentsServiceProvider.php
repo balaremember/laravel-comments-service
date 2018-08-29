@@ -11,7 +11,6 @@ use Balaremember\LaravelCommentsService\Contracts\ILazyComment;
 use Balaremember\LaravelCommentsService\Contracts\IListStrategy;
 use Balaremember\LaravelCommentsService\Contracts\ITransformer;
 use Balaremember\LaravelCommentsService\Contracts\ITreeStrategy;
-use Balaremember\LaravelCommentsService\Contracts\IUserModel;
 use Balaremember\LaravelCommentsService\DatabaseAbstractLayer\CommentRepositoryAdapter;
 use Balaremember\LaravelCommentsService\Service\CommentService;
 use Balaremember\LaravelCommentsService\Strategy\CommentTransformerListStrategy;

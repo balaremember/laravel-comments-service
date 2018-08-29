@@ -4,15 +4,15 @@ namespace Balaremember\LaravelCommentsService\Test\Unit;
 
 use Balaremember\LaravelCommentsService\Collection\CommentsCollection;
 use Balaremember\LaravelCommentsService\Comments\LazyComment;
+use Balaremember\LaravelCommentsService\CommentsServiceProvider;
 use Balaremember\LaravelCommentsService\Entities\Comment;
 use Balaremember\LaravelCommentsService\Service\CommentService;
 use Balaremember\LaravelCommentsService\Strategy\CommentTransformerTreeStrategy;
 use Balaremember\LaravelCommentsService\Comments\Comment as CommentEntity;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\App;
 use \Mockery;
-use PHPUnit\Framework\TestCase;
+use Orchestra\Testbench\TestCase;
 
 class CommentTransformerTreeStrategyTest extends TestCase
 {
@@ -23,6 +23,16 @@ class CommentTransformerTreeStrategyTest extends TestCase
     protected function setUp()
     {
         parent::setUp();
+        $this->withFactories('/home/rtagirov/laravel-comments-service/database/factories');
+//
+//        require  'src/Strategies/CommentTransformerTreeStrategy.php';
+//        require 'src/Collections/CommentsCollection.php';
+//        require 'src/Transformers/CommentTransformer.php';
+    }
+
+    protected function getPackageProviders($app)
+    {
+        return [CommentsServiceProvider::class];
     }
 
     /**
@@ -45,13 +55,13 @@ class CommentTransformerTreeStrategyTest extends TestCase
 
         $strategy = new CommentTransformerTreeStrategy($serviceMock);
 
-        $rootComment = App::factory(Comment::class)->make([
+        $rootComment = factory(Comment::class)->make([
             'id' => 1,
             'parent_id' => null,
             'commentable_id' => 1
         ]);
 
-        $firstLvlComment = App::factory(Comment::class)->make([
+        $firstLvlComment = factory(Comment::class)->make([
             'id' => 2,
             'commentable_id' => 1,
             'parent_id' => $rootComment->id,
@@ -59,7 +69,7 @@ class CommentTransformerTreeStrategyTest extends TestCase
             'updated_at' => Carbon::now()
         ]);
 
-        $secondLvlComment = App::factory(Comment::class)->make([
+        $secondLvlComment = factory(Comment::class)->make([
             'id' => 3,
             'commentable_id' => 1,
             'parent_id' => $firstLvlComment->id,
@@ -67,7 +77,7 @@ class CommentTransformerTreeStrategyTest extends TestCase
             'updated_at' => Carbon::now()
         ]);
 
-        $thirdLvlComment = App::factory(Comment::class)->make([
+        $thirdLvlComment = factory(Comment::class)->make([
             'id' => 4,
             'commentable_id' => 1,
             'parent_id' => $secondLvlComment->id,

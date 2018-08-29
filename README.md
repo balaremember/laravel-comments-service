@@ -15,7 +15,7 @@ Tree comments system for laravel projects.
     ```
 2. Run composer install:
     ```
-    composer require balaremember/laravel-comments-service --dev
+    composer require balaremember/laravel-comments-service
     ```
 3. Publish vendor definitions:
     ```
