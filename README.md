@@ -25,7 +25,7 @@ Tree comments system for laravel projects.
     
     #### Other
     
-    In your `config/app.php` add `Prettus\Repository\Providers\RepositoryServiceProvider::class` to the end of the `providers` array:
+    In your `config/app.php` add `Balaremember\LaravelCommentsService\CommentsServiceProvider::class` to the end of the `providers` array:
     
     ```php
     'providers' => [
