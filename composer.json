@@ -12,6 +12,7 @@
     "homepage": "https://github.com/balaremember/laravel-comments-service",
     "minimum-stability": "dev",
     "require": {
+        "php": ">=7.1.0",
         "illuminate/database": "~5.0",
         "illuminate/config": "~5.0",
         "illuminate/container": "~5.0",
