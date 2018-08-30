@@ -17,9 +17,33 @@ Tree comments system for laravel projects.
     ```
     composer require balaremember/laravel-comments-service
     ```
-3. Publish vendor definitions:
+3.  ### Laravel
+    
+    #### >= laravel5.5
+    
+    ServiceProvider will be attached automatically
+    
+    #### Other
+    
+    In your `config/app.php` add `Prettus\Repository\Providers\RepositoryServiceProvider::class` to the end of the `providers` array:
+    
+    ```php
+    'providers' => [
+        ...
+        Balaremember\LaravelCommentsService\CommentsServiceProvider::class,
+    ],
     ```
-    php artisan vendor:publish --provider="Balaremember\LaravelCommentsService\CommentsServiceProvider"
+    
+    If Lumen
+    
+    ```php
+    $app->register(Balaremember\LaravelCommentsService\CommentsServiceProvider::class);
+    ```
+    
+    Publish Configuration
+    
+    ```shell
+    php artisan vendor:publish --provider "Balaremember\LaravelCommentsService\CommentsServiceProvider"
     ```
 4. Now you have comments config file with parameters:
     ```php
